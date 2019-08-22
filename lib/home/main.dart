@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 40),
+                  padding: EdgeInsets.only(top: 48),
                   child: Image.asset('assets/images/banner.jpg'),
                 ),
               )
