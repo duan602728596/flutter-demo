@@ -8,7 +8,7 @@ class LoginForm extends StatelessWidget {
 
   // 表单验证的正则
   static RegExp usrValidReg = RegExp(r'^\s*$');
-  static RegExp pwwValidReg = RegExp(r'^\s*$');
+  static RegExp pwdValidReg = RegExp(r'^$');
 
   // 登陆
   Future login(BuildContext context) async {
@@ -82,7 +82,7 @@ class LoginForm extends StatelessWidget {
                   obscureText: true,
                   decoration: const InputDecoration(labelText: 'password'),
                   validator: (value) {
-                    if (pwwValidReg.hasMatch(value)) {
+                    if (pwdValidReg.hasMatch(value)) {
                       return 'Please input password.';
                     }
 
