@@ -26,10 +26,34 @@ class LoginForm extends StatelessWidget {
       var data = res.data;
 
       if (data['code'] == 0) {
+        // 登陆成功
+        SnackBar snackBar = SnackBar(
+          content: Text('Login success!'),
+          duration: Duration(seconds: 2),
+        );
+
+        Scaffold.of(context).showSnackBar(snackBar);
+
+        // 路由跳转
         Navigator.of(context).pushNamed('/home');
+      } else {
+        // 登陆失败
+        SnackBar snackBar = SnackBar(
+          content: Text('Login faild!'),
+          duration: Duration(seconds: 2),
+        );
+
+        Scaffold.of(context).showSnackBar(snackBar);
       }
     } catch (err) {
       print(err);
+
+      SnackBar snackBar = SnackBar(
+        content: Text('This has an error!'),
+        duration: Duration(seconds: 2),
+      );
+
+      Scaffold.of(context).showSnackBar(snackBar);
     }
   }
 
