@@ -14,7 +14,7 @@ class LoginForm extends StatelessWidget {
   Future login(BuildContext context) async {
     try {
       Dio dio = Dio(BaseOptions(
-        baseUrl: 'http://1.2.3.4:5011', // 使用电脑的ip地址而不是127.0.0.1
+        baseUrl: 'http://192.168.199.200:5011', // 使用电脑的ip地址而不是127.0.0.1
         method: 'POST',
         connectTimeout: 60000,
       ));
@@ -101,7 +101,8 @@ class LoginForm extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: RaisedButton(
-                    child: Text('Submit'),
+                    color: Color(0xff2f54eb),
+                    child: Text('Submit', style: TextStyle(color: Color(0xffffffff))),
                     onPressed: () {
                       handleFormSubmit(context);
                     },

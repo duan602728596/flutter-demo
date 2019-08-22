@@ -9,7 +9,7 @@ class Login extends StatelessWidget {
       color: Color(0xffffffff),
       child: Column(children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: 40.0, bottom: 24.0),
+          padding: EdgeInsets.only(top: 54.0, bottom: 24.0),
           child: Center(
             child: Text('Flutter Demo', style: TextStyle(fontSize: 24, color: Color(0xff2f54eb))),
           ),
