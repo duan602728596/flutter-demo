@@ -10,9 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'flutter demo',
-      home: Scaffold(
-        body: Login(),
-      ),
+      home: Login(),
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => Login(),
         '/home': (BuildContext context) => Home(),
