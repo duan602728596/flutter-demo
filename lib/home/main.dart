@@ -21,8 +21,8 @@ class Home extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(
               top: 8,
-              left: 16,
-              right: 16,
+              left: 8,
+              right: 8,
               bottom: 32
             ),
             child: Container(child: HomeList()),
