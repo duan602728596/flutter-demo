@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
+const homeData = require('./homeData');
 
 /**
  * 提供mock数据的服务
@@ -19,6 +20,14 @@ router.post('/login', jsonParser, function(req, res, next) {
   res.send({
     code: 0,
     message: body
+  });
+});
+
+// 数据
+router.get('/homeData', function(req, res, next) {
+  res.send({
+    code: 0,
+    data: homeData
   });
 });
 

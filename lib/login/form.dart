@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import '../home/main.dart';
-import './baseUrl.dart'; // 自定义baseUrl
+import '../_url.dart';
 
 class LoginForm extends StatelessWidget {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -16,10 +16,9 @@ class LoginForm extends StatelessWidget {
   Future login(BuildContext context) async {
     try {
       Dio dio = Dio(BaseOptions(
-        baseUrl: baseUrl, // 使用电
-        // 脑的ip地址而不是127.0.0.1
+        baseUrl: baseUrl, // 使用电脑的ip地址而不是127.0.0.1
         method: 'POST',
-        connectTimeout: 60000,
+        connectTimeout: 10000,
       ));
 
       var res = await dio.request('/login', data: {
@@ -38,13 +37,15 @@ class LoginForm extends StatelessWidget {
         Scaffold.of(context).showSnackBar(snackBar);
 
         // 路由跳转
-        // Navigator.of(context).pushNamed('/home');
+        Navigator.of(context).pushNamed('/home');
 
         // 路由跳转并删除路由
+        /*
         Navigator.of(context).pushAndRemoveUntil(
           new MaterialPageRoute(builder: (context) => Home()),
           (route) => route == null,
         );
+        */
       } else {
         // 登陆失败
         SnackBar snackBar = SnackBar(
