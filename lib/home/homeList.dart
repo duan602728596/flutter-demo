@@ -47,7 +47,7 @@ class ListState extends State<HomeList> {
               padding: EdgeInsets.only(right: 8),
               child: Icon(Icons.star, size: 16.0, color: Color(0xfffaad14))
             ),
-            Text(item['title'], style: TextStyle(fontSize: 16)),
+            Text(item['title'], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
           ]),
           onPressed: () => handleLinkPress(i),
         ),
