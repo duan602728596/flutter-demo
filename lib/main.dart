@@ -14,6 +14,7 @@ class App extends StatelessWidget {
         body: Login(),
       ),
       routes: <String, WidgetBuilder>{
+        '/login': (BuildContext context) => Login(),
         '/home': (BuildContext context) => Home(),
       },
     );
