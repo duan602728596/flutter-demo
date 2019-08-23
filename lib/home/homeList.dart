@@ -14,7 +14,7 @@ class ListState extends State<HomeList> {
 
   // 点击链接
   void handleLinkPressed(int i) {
-    (i);
+    print(i);
   }
 
   // 请求数据
