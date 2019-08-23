@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './homeList.dart';
+import './homeBody.dart';
 
-class HomeState extends State<HomeLayout> {
+class HomeState extends State<HomePage> {
   int tabCurrentIndex = 0;
 
   // 切换选项卡
@@ -10,6 +10,20 @@ class HomeState extends State<HomeLayout> {
       setState(() {
         tabCurrentIndex = index;
       });
+    }
+  }
+
+  // 选项卡切换
+  Widget tabBodyRender() {
+    switch(tabCurrentIndex) {
+      case 0:
+        return HomeBody();
+
+      case 1:
+        return Text('List');
+
+      case 2:
+        return Text('My');
     }
   }
 
@@ -32,7 +46,7 @@ class HomeState extends State<HomeLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
-            title: Text('Me'),
+            title: Text('My'),
           ),
         ],
         currentIndex: tabCurrentIndex,
@@ -40,29 +54,12 @@ class HomeState extends State<HomeLayout> {
       ),
 
       // 布局
-      body: Container(
-        color: Color(0xffffffff),
-        child: Column(children: <Widget>[
-          // 图片banner
-          Row(children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Image.asset('assets/images/banner.jpg'),
-            )
-          ]),
-
-          // 列表
-          Padding(
-            padding: EdgeInsets.only(top: 8, right: 8, bottom: 32, left: 8),
-            child: Container(child: HomeList()),
-          ),
-        ]),
-      ),
+      body: tabBodyRender(),
     );
   }
 }
 
-class HomeLayout extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
   HomeState createState() => HomeState();
 }
@@ -70,6 +67,6 @@ class HomeLayout extends StatefulWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return HomeLayout();
+    return HomePage();
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import '../home/main.dart';
-import '../utils.dart';
 import '../_url.dart';
 
 class LoginForm extends StatelessWidget {
@@ -38,10 +37,13 @@ class LoginForm extends StatelessWidget {
         Scaffold.of(context).showSnackBar(snackBar);
 
         // 路由跳转
-        Navigator.of(context).pushNamed('/home');
+        // Navigator.of(context).pushNamed('/home');
 
         // 路由跳转并删除路由
-        // routerPush(context, Home);
+        Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(builder: (context) => Home()),
+            (route) => route == null,
+        );
       } else {
         // 登陆失败
         SnackBar snackBar = SnackBar(
