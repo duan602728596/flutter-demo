@@ -5,6 +5,13 @@ import '../_url.dart';
 class ListState extends State<HomeList> {
   List<dynamic> homeData = [];
 
+  // 初始化
+  @override
+  void initState() {
+    super.initState();
+    getHomeListData();
+  }
+
   // 点击链接
   void handleLinkPress(int i) {
     (i);
@@ -26,12 +33,6 @@ class ListState extends State<HomeList> {
     });
   }
 
-  // 初始化
-  @override
-  void initState() {
-    getHomeListData();
-  }
-
   // 渲染列表
   List<Widget> dataListRender() {
     List<Widget> element = [];
@@ -45,7 +46,7 @@ class ListState extends State<HomeList> {
           child: Row(children: <Widget>[
             Padding(
               padding: EdgeInsets.only(right: 8),
-              child: Icon(Icons.star, size: 16.0, color: Color(0xfffaad14))
+              child: Icon(Icons.star, size: 16.0, color: Color(0xfffaad14)),
             ),
             Text(item['title'], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
           ]),
