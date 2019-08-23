@@ -42,7 +42,7 @@ class LoginForm extends StatelessWidget {
         // 路由跳转并删除路由
         Navigator.of(context).pushAndRemoveUntil(
           new MaterialPageRoute(builder: (context) => Home()),
-            (route) => route == null,
+          (route) => route == null,
         );
       } else {
         // 登陆失败

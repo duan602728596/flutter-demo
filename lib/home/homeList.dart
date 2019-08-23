@@ -13,7 +13,7 @@ class ListState extends State<HomeList> {
   }
 
   // 点击链接
-  void handleLinkPress(int i) {
+  void handleLinkPressed(int i) {
     (i);
   }
 
@@ -50,7 +50,7 @@ class ListState extends State<HomeList> {
             ),
             Text(item['title'], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
           ]),
-          onPressed: () => handleLinkPress(i),
+          onPressed: () => handleLinkPressed(i),
         ),
       ));
     }
