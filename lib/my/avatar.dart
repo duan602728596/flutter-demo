@@ -29,7 +29,7 @@ class Avatar extends StatelessWidget {
       ]),
 
       // 分割线
-      Divider(),
+      Divider(color: Color(0xffd9d9d9)),
     ]);
   }
 }
