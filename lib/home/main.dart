@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
                   child: Image.asset('assets/images/banner.jpg'),
                 ),
               )
-            ],),
+            ]),
           ],
         ),
       ),

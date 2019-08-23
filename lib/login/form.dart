@@ -83,68 +83,64 @@ class LoginForm extends StatelessWidget {
       key: formKey,
       child: Padding(
         padding: EdgeInsets.only(left: 16.0, right: 16.0),
-        child: Column(
-          children: <Widget>[
-            // 用户名
-            Padding(
-              padding: EdgeInsets.only(bottom: 16.0),
-              child: Container(
-                height: 80,
-                child: TextFormField(
-                  decoration: const InputDecoration(labelText: 'username'),
-                  validator: (value) {
-                    if (usrValidReg.hasMatch(value)) {
-                      return 'Please input username.';
-                    }
+        child: Column(children: <Widget>[
+          // 用户名
+          Padding(
+            padding: EdgeInsets.only(bottom: 16.0),
+            child: Container(
+              height: 80,
+              child: TextFormField(
+                decoration: const InputDecoration(labelText: 'username'),
+                validator: (value) {
+                  if (usrValidReg.hasMatch(value)) {
+                    return 'Please input username.';
+                  }
 
-                    return null;
-                  },
-                  onSaved: (value) {
-                    username = value;
-                  },
-                ),
+                  return null;
+                },
+                onSaved: (value) {
+                  username = value;
+                },
               ),
             ),
+          ),
 
-            // 密码
-            Padding(
-              padding: EdgeInsets.only(bottom: 40.0),
-              child: Container(
-                height: 80,
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: const InputDecoration(labelText: 'password'),
-                  validator: (value) {
-                    if (pwdValidReg.hasMatch(value)) {
-                      return 'Please input password.';
-                    }
+          // 密码
+          Padding(
+            padding: EdgeInsets.only(bottom: 40.0),
+            child: Container(
+              height: 80,
+              child: TextFormField(
+                obscureText: true,
+                decoration: const InputDecoration(labelText: 'password'),
+                validator: (value) {
+                  if (pwdValidReg.hasMatch(value)) {
+                    return 'Please input password.';
+                  }
 
-                    return null;
-                  },
-                  onSaved: (value) {
-                    password = value;
-                  },
-                ),
+                  return null;
+                },
+                onSaved: (value) {
+                  password = value;
+                },
               ),
             ),
+          ),
 
-            // 提交
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: RaisedButton(
-                    color: Color(0xff2f54eb),
-                    child: Text('Submit', style: TextStyle(color: Color(0xffffffff))),
-                    onPressed: () {
-                      handleFormSubmit(context);
-                    },
-                  ),
-                ),
-              ],
+          // 提交
+          Row(children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: RaisedButton(
+                color: Color(0xff2f54eb),
+                child: Text('Submit', style: TextStyle(color: Color(0xffffffff))),
+                onPressed: () {
+                  handleFormSubmit(context);
+                },
+              ),
             ),
-          ],
-        ),
+          ]),
+        ]),
       ),
     );
   }
