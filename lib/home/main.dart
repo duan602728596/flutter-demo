@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './homeBody.dart';
+import '../my/main.dart';
 
 class HomeState extends State<HomePage> {
   int tabCurrentIndex = 0;
@@ -23,7 +24,7 @@ class HomeState extends State<HomePage> {
         return Text('List');
 
       case 2:
-        return Text('My');
+        return My();
     }
   }
 

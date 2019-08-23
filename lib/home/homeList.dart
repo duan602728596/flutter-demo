@@ -7,7 +7,7 @@ class ListState extends State<HomeList> {
 
   // 点击链接
   void handleLinkPress(int i) {
-    print(i);
+    (i);
   }
 
   // 请求数据
@@ -22,8 +22,6 @@ class ListState extends State<HomeList> {
     var data = res.data;
 
     setState(() {
-      print(data['data']);
-
       homeData = data['data'];
     });
   }
