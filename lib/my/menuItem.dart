@@ -10,7 +10,6 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(children: <Widget>[
       FlatButton(
         child: Row(children: <Widget>[
