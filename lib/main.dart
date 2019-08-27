@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import './store/store.dart';
 import './login/main.dart';
 import './home/main.dart';
-
-/* App main */
-void main() => runApp(App());
 
 class App extends StatelessWidget {
   @override
@@ -17,4 +16,12 @@ class App extends StatelessWidget {
       },
     );
   }
+}
+
+/* App main */
+void main() {
+  runApp(StoreProvider(
+    store: store,
+    child: App(),
+  ));
 }
