@@ -7,8 +7,6 @@ import './actions.dart';
 import '../_url.dart';
 
 class ListState extends State<HomeList> {
-  // List<dynamic> homeData = [];
-
   // 初始化
   @override
   void initState() {
