@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:dio/dio.dart';
+import '../store/store.dart';
+import './actions.dart';
 import '../_url.dart';
 
 class ListState extends State<HomeList> {
-  List<dynamic> homeData = [];
+  // List<dynamic> homeData = [];
 
   // 初始化
   @override
@@ -28,17 +32,16 @@ class ListState extends State<HomeList> {
     var res = await dio.request('/homeData');
     var data = res.data;
 
-    setState(() {
-      homeData = data['data'];
-    });
+    store.dispatch(homeDataAction(data['data']));
   }
 
   // 渲染列表
-  List<Widget> dataListRender() {
+  List<Widget> dataListRender(List<dynamic> rawData) {
     List<Widget> element = [];
+    List<dynamic> data = rawData ?? [];
 
-    for (int i = 0; i < homeData.length; i++) {
-      dynamic item = homeData[i];
+    for (int i = 0; i < data.length; i++) {
+      dynamic item = data[i];
 
       element.add(Container(
         height: 32,
@@ -60,7 +63,16 @@ class ListState extends State<HomeList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: dataListRender());
+    return StoreConnector(
+      converter: (Store store) {
+        return {
+          'homeData': store.state['homeData']
+        };
+      },
+      builder: (BuildContext context, Map<String, dynamic>count) {
+        return Column(children: dataListRender(count['homeData']));
+      },
+    );
   }
 }
 
