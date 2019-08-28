@@ -3,7 +3,7 @@ import '../home/actions.dart';
 
 /* 初始值 */
 Map<String, dynamic> initialState = {
-  'homeData': []
+  'home': homeInitialState
 };
 
 /* reducers map */

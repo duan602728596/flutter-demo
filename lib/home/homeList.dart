@@ -64,7 +64,7 @@ class ListState extends State<HomeList> {
     return StoreConnector(
       converter: (Store store) {
         return {
-          'homeData': store.state['homeData']
+          'homeData': store.state['home']['homeData']
         };
       },
       builder: (BuildContext context, Map<String, dynamic>count) {
