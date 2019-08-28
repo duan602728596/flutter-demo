@@ -19,7 +19,9 @@ router.post('/login', jsonParser, function(req, res, next) {
 
   res.send({
     code: 0,
-    message: body
+    data: {
+      username: 'username'
+    }
   });
 });
 

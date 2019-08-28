@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:dio/dio.dart';
+import '../store/store.dart';
+import '../my/actions.dart';
 import '../home/main.dart';
 import '../_url.dart';
 
 class LoginForm extends StatelessWidget {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String username;
   String password;
 
@@ -35,15 +39,13 @@ class LoginForm extends StatelessWidget {
         );
 
         Scaffold.of(context).showSnackBar(snackBar);
+        store.dispatch(loginUserInfoAction(data['data']));
 
-        // 路由跳转
-        // Navigator.of(context).pushNamed('/home');
-
-        // 路由跳转并删除路由
         Navigator.of(context).pushAndRemoveUntil(
           new MaterialPageRoute(builder: (context) => Home()),
           (route) => route == null,
         );
+        // Navigator.of(context).pushNamed('/home');
       } else {
         // 登陆失败
         SnackBar snackBar = SnackBar(
@@ -78,69 +80,76 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Padding(
-        padding: EdgeInsets.only(left: 16.0, right: 16.0),
-        child: Column(children: <Widget>[
-          // 用户名
-          Padding(
-            padding: EdgeInsets.only(bottom: 16.0),
-            child: Container(
-              height: 80,
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'username'),
-                validator: (value) {
-                  if (usrValidReg.hasMatch(value)) {
-                    return 'Please input username.';
-                  }
+    return StoreConnector(
+      converter: (Store store) {
+        return {};
+      },
+      builder: (BuildContext context, count) {
+        return Form(
+          key: formKey,
+          child: Padding(
+            padding: EdgeInsets.only(left: 16.0, right: 16.0),
+            child: Column(children: <Widget>[
+              // 用户名
+              Padding(
+                padding: EdgeInsets.only(bottom: 16.0),
+                child: Container(
+                  height: 80,
+                  child: TextFormField(
+                    decoration: const InputDecoration(labelText: 'username'),
+                    validator: (value) {
+                      if (usrValidReg.hasMatch(value)) {
+                        return 'Please input username.';
+                      }
 
-                  return null;
-                },
-                onSaved: (value) {
-                  username = value;
-                },
+                      return null;
+                    },
+                    onSaved: (value) {
+                      username = value;
+                    },
+                  ),
+                ),
               ),
-            ),
+
+              // 密码
+              Padding(
+                padding: EdgeInsets.only(bottom: 40.0),
+                child: Container(
+                  height: 80,
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(labelText: 'password'),
+                    validator: (value) {
+                      if (pwdValidReg.hasMatch(value)) {
+                        return 'Please input password.';
+                      }
+
+                      return null;
+                    },
+                    onSaved: (value) {
+                      password = value;
+                    },
+                  ),
+                ),
+              ),
+
+              // 提交
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: RaisedButton(
+                    color: Color(0xff2f54eb),
+                    child: Text('Submit', style: TextStyle(color: Color(0xffffffff))),
+                    onPressed: () {
+                      handleFormSubmit(context);
+                    },
+                  ),
+                ),
+              ]),
+            ]),
           ),
-
-          // 密码
-          Padding(
-            padding: EdgeInsets.only(bottom: 40.0),
-            child: Container(
-              height: 80,
-              child: TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(labelText: 'password'),
-                validator: (value) {
-                  if (pwdValidReg.hasMatch(value)) {
-                    return 'Please input password.';
-                  }
-
-                  return null;
-                },
-                onSaved: (value) {
-                  password = value;
-                },
-              ),
-            ),
-          ),
-
-          // 提交
-          Row(children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: RaisedButton(
-                color: Color(0xff2f54eb),
-                child: Text('Submit', style: TextStyle(color: Color(0xffffffff))),
-                onPressed: () {
-                  handleFormSubmit(context);
-                },
-              ),
-            ),
-          ]),
-        ]),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import '../store/store.dart';
 
 class Avatar extends StatelessWidget {
   @override
@@ -19,12 +22,21 @@ class Avatar extends StatelessWidget {
         ),
 
         // 昵称
-        Text(
-          'Nickname',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
-          ),
+        StoreConnector(
+          converter: (Store store) {
+            return {
+              'userInfo': store.state['my']['userInfo']
+            };
+          },
+          builder: (BuildContext context, count) {
+            return Text(
+              count['userInfo']['username'],
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w400,
+              ),
+            );
+          },
         ),
       ]),
 

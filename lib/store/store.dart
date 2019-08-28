@@ -1,14 +1,17 @@
 import 'package:redux/redux.dart';
 import '../home/actions.dart';
+import '../my/actions.dart';
 
 /* 初始值 */
 Map<String, dynamic> initialState = {
-  'home': homeInitialState
+  'home': homeInitialState,
+  'my': myInitialState
 };
 
 /* reducers map */
 Map<String, dynamic> reducers = {
-  'home': homeReducer
+  'home': homeReducer,
+  'my': myReducer
 };
 
 /* 合并reducers */
