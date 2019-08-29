@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './homeBody.dart';
+import '../list/main.dart';
 import '../my/main.dart';
 
 class HomeState extends State<HomePage> {
@@ -21,7 +22,7 @@ class HomeState extends State<HomePage> {
         return HomeBody();
 
       case 1:
-        return Text('List');
+        return ArticleList();
 
       case 2:
         return My();
