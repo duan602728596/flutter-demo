@@ -1,15 +1,15 @@
-/* 模拟新闻数据 */
+/* 模拟首页数据 */
 const homeData = [
   {
-    id: 1,
+    id: 0,
     title: 'Introducing the New React DevTools'
   },
   {
-    id: 2,
+    id: 1,
     title: 'JavaScript and Node Testing Best Practices'
   },
   {
-    id: 3,
+    id: 2,
     title: 'V8 release v7.7'
   }
 ];
